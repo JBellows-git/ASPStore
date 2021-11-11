@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GroupProject.Models;
 
 namespace GroupProject.Data
 {
@@ -12,5 +13,9 @@ namespace GroupProject.Data
             : base(options)
         {
         }
+
+        public DbSet<Inventory> Inventories { get; set; }
+
+
     }
 }
