@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<GroupProject.Models.Inventory>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -12,9 +13,42 @@
         <table>
             <thead>
                 <tr>
-                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InventoryName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InventoryDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InventoryStock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IventoryPrice)
+                    </th>
                 </tr>
             </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InventoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InventoryDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InventoryStock)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IventoryPrice)
+                        </td>
+                        <td>
+                            <a asp-action="AddToCart" asp-route-id="@item.InventoryID" asp-route-returnUrl="home/store">Add to Cart</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
         </table>
     </div>
 </body>
