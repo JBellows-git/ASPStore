@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace GroupProject.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //diabling roles use until we get it to where we can add and edit roles
+    //[Authorize(Roles = "Admin")]
     public class RoleAdminController : Controller
     {
         public IActionResult Index()
