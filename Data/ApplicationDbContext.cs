@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using GroupProject.Models;
 
 namespace GroupProject.Data
@@ -15,6 +16,8 @@ namespace GroupProject.Data
         }
 
         public DbSet<Inventory> Inventories { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

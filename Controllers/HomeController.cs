@@ -43,7 +43,7 @@ namespace GroupProject.Controllers
         [Authorize]
         public IActionResult Customer()
         {
-            ViewData["Message"] = "Welcom to your log page.";
+            ViewData["Message"] = "Welcom to your profile page.";
             return View();
         }
 
