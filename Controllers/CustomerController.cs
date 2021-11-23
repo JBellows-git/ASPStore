@@ -25,9 +25,12 @@ namespace GroupProject.Controllers
             this.hostingEnvironment = hostingEnvironment;
         }
 
+        //still need to figure out how to add admin to users
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
-            return View();          
+
+            return View(await _context.Customers.ToListAsync());
         }
     }
 }

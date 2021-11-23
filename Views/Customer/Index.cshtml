@@ -1,7 +1,31 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@model Customer
+@model IEnumerable<GroupProject.Models.Customer>
 
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
 <h2>@UserManager.GetUserName(User)</h2>
+<br />
+<br />
+<h2>User Information</h2>
+
+<h4>User ID:</h4> @UserManager.GetUserName(User)
+<br />
+@foreach (var cust in Model)
+{
+    @if (cust.Id.ToString() == UserManager.GetUserId(User))
+    {
+        <h4>First Name:</h4>@Html.DisplayNameFor(model => model.FirstName)
+        <h4>Last Name:</h4>@Html.DisplayNameFor(model => model.LastName)
+        <h4>Address:</h4>@Html.DisplayNameFor(model => model.Address)
+        <h4>City:</h4>@Html.DisplayNameFor(model => model.City)
+        <h4>State:</h4>@Html.DisplayNameFor(model => model.State)
+        <h4>Zipcode:</h4>@Html.DisplayNameFor(model => model.Zipcode)
+    }
+    else
+    {
+        <h4>You're information hasn't been added yet.</h4>
+    }
+}
+
+<a asp-area="" asp-controller="Customer" asp-action="Update">Update Information</a>
