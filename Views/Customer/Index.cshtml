@@ -1,5 +1,7 @@
-﻿@model Customer
+﻿@using Microsoft.AspNetCore.Identity
+@model Customer
 
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
-
-
+<h2>@UserManager.GetUserName(User)</h2>

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +9,11 @@ using GroupProject.Data;
 using GroupProject.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace GroupProject.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,9 +25,9 @@ namespace GroupProject.Controllers
             this.hostingEnvironment = hostingEnvironment;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View();          
         }
     }
 }
