@@ -26,10 +26,31 @@ namespace GroupProject.Controllers
         {
             return View(await _context.Inventories.ToListAsync());
         }
-        //public async Task<IActionResult> Create()
-        //{
-            //Inventory newInventory = new Inventory;
-            //return View();
-        //}
+
+        public IActionResult NewItem()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Create(InventoryViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Inventory newInventory = new Inventory
+                {
+                    InventoryNumber = model.InventoryNumber,
+                    InventoryName = model.InventoryName,
+                    InventoryDescription = model.InventoryDescription,
+                    InventoryStock = model.InventoryStock,
+                    IventoryPrice = model.IventoryPrice
+                };
+                
+                _context.Add(newInventory);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Store");
+            }
+
+            return View();
+        }
     }
 }
