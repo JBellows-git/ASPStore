@@ -1,13 +1,44 @@
-﻿<!DOCTYPE html>
+﻿@model GroupProject.Models.CustomerViewModel
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>Update Account Information</title>
 </head>
 <body>
     <div>
-        @RenderBody()
+        <h2>Update Your Information</h2>
+        <form asp-action="InformationUpdate">
+            <table>
+                <tr>
+                    <td><label>First Name: </label></td>
+                    <td><input asp-for="FirstName" id="FirstName" /></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name: </label></td>
+                    <td><input asp-for="LastName" id="LastName" /></td>
+                </tr>
+                <tr>
+                    <td><label>Address: </label></td>
+                    <td><input asp-for="Address" id="Address" /></td>
+                </tr>
+                <tr>
+                    <td><label>City: </label></td>
+                    <td><input asp-for="City" id="City" /></td>
+                </tr>
+                <tr>
+                    <td><label>State: </label></td>
+                    <td><input asp-for="State" id="State" /></td>
+                </tr>
+                <tr>
+                    <td><label>Zip code: </label></td>
+                    <td><input asp-for="Zipcode" id="Zipcode" /></td>
+                </tr>
+            </table>
+            <input type="submit" value="Update" />
+
+        </form>
     </div>
 </body>
 </html>
