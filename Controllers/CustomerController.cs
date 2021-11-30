@@ -41,16 +41,24 @@ namespace GroupProject.Controllers
             var cust = (from c in _context.Customers
                         where c.Email == User.Identity.Name
                         select c).FirstOrDefault();
-            var viewCust = new CustomerViewModel
+            if (cust != null)
             {
-                FirstName = cust.FirstName,
-                LastName = cust.LastName,
-                Address = cust.Address,
-                City = cust.City,
-                State = cust.State,
-                Zipcode = cust.Zipcode
-            };
-            return View(viewCust);
+                var viewCust = new CustomerViewModel
+                {
+                    FirstName = cust.FirstName,
+                    LastName = cust.LastName,
+                    Address = cust.Address,
+                    City = cust.City,
+                    State = cust.State,
+                    Zipcode = cust.Zipcode
+                };
+                return View(viewCust);
+            } else
+            {
+                return View();
+            }
+            
+           
         }
 
         public async Task<IActionResult> InformationUpdate(CustomerViewModel model)
@@ -61,7 +69,18 @@ namespace GroupProject.Controllers
             if (ModelState.IsValid)
             {
                 
-                if (cust.Equals(null))
+                if (cust != null)
+                {
+                    cust.FirstName = model.FirstName;
+                    cust.LastName = model.LastName;
+                    cust.Address = model.Address;
+                    cust.City = model.City;
+                    cust.State = model.State;
+                    cust.Zipcode = model.Zipcode;
+
+                    _context.SaveChanges();
+
+                } else
                 {
                     Customer newCust = new Customer
                     {
@@ -72,22 +91,13 @@ namespace GroupProject.Controllers
                         State = model.State,
                         Zipcode = model.Zipcode,
                         Email = User.Identity.Name
-                    };                    
+                    };
 
                     _context.Add(newCust);
                     await _context.SaveChangesAsync();
-                    
-                } else
-                {
-                    cust.FirstName = model.FirstName;
-                    cust.LastName = model.LastName;
-                    cust.Address = model.Address;
-                    cust.City = model.City;
-                    cust.State = model.State;
-                    cust.Zipcode = model.Zipcode;
-
-                    _context.SaveChanges();                    
                 }
+
+                
                 return RedirectToAction("Index");
             }
 
