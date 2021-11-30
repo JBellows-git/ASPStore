@@ -1,4 +1,6 @@
-﻿@model GroupProject.Models.InventoryViewModel
+﻿<link href="~/css/project.css" rel="stylesheet" />
+
+@model GroupProject.Models.InventoryViewModel
 <!DOCTYPE html>
 
 <html>
@@ -12,11 +14,20 @@
 
         <form asp-action="Create">
 
-            <input asp-for="InventoryNumber" id="InventoryNumber" />
-            <input asp-for="InventoryName" id="InventoryName" />
-            <input asp-for="InventoryDescription" id="InventoryDescription" />
-            <input asp-for="InventoryStock" id="InventoryStock" />
-            <input asp-for="IventoryPrice" id="InventoryPrice" />
+            <label>Item Number: </label>
+            <input asp-for="InventoryNumber" id="InventoryNumber" /><br />
+
+            <label>Item Name: </label>
+            <input asp-for="InventoryName" id="InventoryName" /><br />
+
+            <label>Item Description: </label>
+            <input asp-for="InventoryDescription" id="InventoryDescription" /><br />
+
+            <label>Item Stock Amount: </label>
+            <input asp-for="InventoryStock" id="InventoryStock" /><br />
+
+            <label>Item Price: </label>
+            <input asp-for="IventoryPrice" id="InventoryPrice" /><br />
             <input type="submit" value="submit" />
         </form>
     </div>

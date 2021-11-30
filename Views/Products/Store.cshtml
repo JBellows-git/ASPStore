@@ -1,5 +1,9 @@
-﻿@model IEnumerable<GroupProject.Models.Inventory>
+﻿<link href="~/css/project.css" rel="stylesheet" />
+
+@model IEnumerable<GroupProject.Models.Inventory>
 <!DOCTYPE html>
+
+<link href="~/css/project.css" rel="stylesheet" />
 
 <html>
 <head>
@@ -11,7 +15,7 @@
         <h2>Our currently available Inventory</h2>
         <a asp-area="" asp-controller="Products" asp-action="NewItem">Add new item</a>
         <table>
-            <thead>
+            <thead >
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.InventoryName)
@@ -24,6 +28,9 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.IventoryPrice)
+                    </th>
+                    <th>
+                        Add to Cart
                     </th>
                 </tr>
             </thead>
