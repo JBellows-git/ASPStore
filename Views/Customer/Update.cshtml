@@ -46,7 +46,7 @@
         {
             @Html.Label("First Name: ")
             @Html.TextBoxFor(model => model.FirstName)
-            @Html.ValidationMessageFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "text-danger" })
             <br />
             @Html.Label("Last Name: ")
             @Html.TextBoxFor(model => model.LastName)
@@ -67,6 +67,7 @@
             @Html.Label("Zip code: ")
             @Html.TextBoxFor(model => model.Zipcode)
             @Html.ValidationMessageFor(model => model.Zipcode)
+            <br />
             <input type="submit" value="Update" />
         }
     </div>
