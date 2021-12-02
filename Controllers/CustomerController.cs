@@ -101,7 +101,7 @@ namespace GroupProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View();
+            return RedirectToAction("Update");
         }
     }
 }

@@ -11,11 +11,11 @@
 <body>
     <div>
         <h2>Update Your Information</h2>
-        <form asp-action="InformationUpdate">
+        @*<form asp-action="InformationUpdate">
             <table>
                 <tr>
                     <td><label>First Name: </label></td>
-                    <td><input asp-for="FirstName" id="FirstName" /></td>
+                    <td><input asp-for="FirstName" id="FirstName" /> @Html.ValidationMessageFor(model => model.FirstName)</td>
                 </tr>
                 <tr>
                     <td><label>Last Name: </label></td>
@@ -40,7 +40,35 @@
             </table>
             <input type="submit" value="Update" />
 
-        </form>
+        </form>*@
+        <br />
+        @using (Html.BeginForm("InformationUpdate", "Customer"))
+        {
+            @Html.Label("First Name: ")
+            @Html.TextBoxFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+            <br />
+            @Html.Label("Last Name: ")
+            @Html.TextBoxFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+            <br />
+            @Html.Label("Addres: ") 
+            @Html.TextBoxFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+            <br />
+            @Html.Label("City: ")
+            @Html.TextBoxFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+            <br />
+            @Html.Label("State: ")
+            @Html.TextBoxFor(model => model.State)
+            @Html.ValidationMessageFor(model => model.State)
+            <br />
+            @Html.Label("Zip code: ")
+            @Html.TextBoxFor(model => model.Zipcode)
+            @Html.ValidationMessageFor(model => model.Zipcode)
+            <input type="submit" value="Update" />
+        }
     </div>
 </body>
 </html>
