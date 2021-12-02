@@ -24,10 +24,9 @@ namespace GroupProject.Models
             }
         }
         
-        public virtual void RemoveLine (Inventory inventory)
-        {
+        public virtual void RemoveLine (Inventory inventory) => 
             lineCollection.RemoveAll(l => l.Inventory.InventoryID == inventory.InventoryID);
-        }
+        
 
         public virtual decimal ComputeTotalValue() =>
             (decimal)lineCollection.Sum(e => e.Inventory.IventoryPrice * e.Quantity);

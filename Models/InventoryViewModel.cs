@@ -18,7 +18,7 @@ namespace GroupProject.Models
 
 		public int InventoryStock { get; set; }
 
-		public decimal? IventoryPrice { get; set; }
+		public decimal IventoryPrice { get; set; }
 
 	}
 }
