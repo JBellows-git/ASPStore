@@ -53,6 +53,7 @@ namespace GroupProject.Controllers
         {
             return View();
         }
+        [Authorize]
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

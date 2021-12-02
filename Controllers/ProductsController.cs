@@ -1,8 +1,10 @@
 ﻿using GroupProject.Data;
 using GroupProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RolesExampleTest.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,49 @@ namespace GroupProject.Controllers
         public IActionResult NewItem()
         {
             return View();
+        }
+
+        [Authorize]
+        public IActionResult AddToCart(int? id, string returnUrl)
+        {
+            Inventory inventory = _context.Inventories.FirstOrDefault(i => i.InventoryID == id);
+
+            if(inventory != null)
+            {
+                Cart cart = GetCart();
+                cart.AddItem(inventory, 1);
+                SaveCart(cart);
+            }
+
+            return View(new CartIndexViewModel { Cart = GetCart(), ReturnUrl = returnUrl });
+        }
+        
+        public IActionResult RemoveFromCart(int? id, string returnUrl)
+        {
+            Inventory inventory = _context.Inventories.FirstOrDefault(i => i.InventoryID == id);
+
+            if (inventory != null)
+            {
+                Cart cart = GetCart();
+                cart.RemoveLine(inventory);
+                SaveCart(cart);
+
+            }
+
+
+            return View("AddToCart", new CartIndexViewModel { Cart = GetCart(), ReturnUrl = returnUrl });
+        }
+
+        private Cart GetCart()
+        {
+            Cart cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
+            return cart;
+        }
+
+        private void SaveCart(Cart cart)
+        {
+            HttpContext.Session.SetJson("Cart", cart);
+
         }
 
         public async Task<IActionResult> Create(InventoryViewModel model)
