@@ -11,65 +11,40 @@
 <body>
     <div>
         <h2>Update Your Information</h2>
-        @*<form asp-action="InformationUpdate">
+        <form asp-action="Update">
+            
             <table>
                 <tr>
-                    <td><label>First Name: </label></td>
-                    <td><input asp-for="FirstName" id="FirstName" /> @Html.ValidationMessageFor(model => model.FirstName)</td>
+                    <td><label asp-for="FirstName">First Name: </label></td>
+                    <td><input asp-for="FirstName" id="FirstName" />&nbsp;@Html.ValidationMessageFor(model => model.FirstName)</td>
                 </tr>
                 <tr>
-                    <td><label>Last Name: </label></td>
-                    <td><input asp-for="LastName" id="LastName" /></td>
+                    <td><label asp-for="LastName">Last Name: </label></td>
+                    <td><input asp-for="LastName" id="LastName" />&nbsp;@Html.ValidationMessageFor(model => model.LastName)</td> 
                 </tr>
                 <tr>
-                    <td><label>Address: </label></td>
-                    <td><input asp-for="Address" id="Address" /></td>
+                    <td><label asp-for="Address">Address: </label></td>
+                    <td><input asp-for="Address" id="Address" />&nbsp;@Html.ValidationMessageFor(model => model.Address)</td>
                 </tr>
                 <tr>
-                    <td><label>City: </label></td>
-                    <td><input asp-for="City" id="City" /></td>
+                    <td><label asp-for="City">City: </label></td>
+                    <td><input asp-for="City" id="City" />&nbsp;@Html.ValidationMessageFor(model => model.City)</td>
                 </tr>
                 <tr>
-                    <td><label>State: </label></td>
-                    <td><input asp-for="State" id="State" /></td>
+                    <td><label asp-for="State">State: </label></td>
+                    <td><input asp-for="State" id="State" />&nbsp;@Html.ValidationMessageFor(model => model.State)</td>
                 </tr>
                 <tr>
-                    <td><label>Zip code: </label></td>
-                    <td><input asp-for="Zipcode" id="Zipcode" /></td>
+                    <td><label asp-for="Zipcode">Zip code: </label></td>
+                    <td><input asp-for="Zipcode" id="Zipcode" />&nbsp; @Html.ValidationMessageFor(model => model.Zipcode)</td>
                 </tr>
             </table>
             <input type="submit" value="Update" />
 
-        </form>*@
+        </form>
         <br />
-        @using (Html.BeginForm("InformationUpdate", "Customer"))
-        {
-            @Html.Label("First Name: ")
-            @Html.TextBoxFor(model => model.FirstName)
-            @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "text-danger" })
-            <br />
-            @Html.Label("Last Name: ")
-            @Html.TextBoxFor(model => model.LastName)
-            @Html.ValidationMessageFor(model => model.LastName)
-            <br />
-            @Html.Label("Addres: ") 
-            @Html.TextBoxFor(model => model.Address)
-            @Html.ValidationMessageFor(model => model.Address)
-            <br />
-            @Html.Label("City: ")
-            @Html.TextBoxFor(model => model.City)
-            @Html.ValidationMessageFor(model => model.City)
-            <br />
-            @Html.Label("State: ")
-            @Html.TextBoxFor(model => model.State)
-            @Html.ValidationMessageFor(model => model.State)
-            <br />
-            @Html.Label("Zip code: ")
-            @Html.TextBoxFor(model => model.Zipcode)
-            @Html.ValidationMessageFor(model => model.Zipcode)
-            <br />
-            <input type="submit" value="Update" />
-        }
+        
+        
     </div>
 </body>
 </html>
