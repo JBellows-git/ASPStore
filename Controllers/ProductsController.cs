@@ -87,7 +87,7 @@ namespace GroupProject.Controllers
                     InventoryName = model.InventoryName,
                     InventoryDescription = model.InventoryDescription,
                     InventoryStock = model.InventoryStock,
-                    IventoryPrice = model.IventoryPrice
+                    InventoryPrice = model.InventoryPrice
                 };
                 
                 _context.Add(newInventory);
