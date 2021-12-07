@@ -10,8 +10,6 @@ namespace GroupProject.Models
 
 	public class InventoryViewModel
 	{
-	
-		public int InventoryNumber { get; set; }
 
 		[Required(ErrorMessage = "You must enter a name for the Inventory Item")]
 		public string InventoryName { get; set; }

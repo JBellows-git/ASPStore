@@ -96,7 +96,20 @@ namespace GroupProject.Controllers
             return View(inventory);
         }
 
-        
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var product = await _context.Inventories.SingleOrDefaultAsync(m => m.InventoryID == id);
+            _context.Inventories.Remove(product);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Store));
+        }
+
+        private bool ProductExists(int id)
+        {
+            return _context.Inventories.Any(e => e.InventoryID == id);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(InventoryViewModel model)
         {

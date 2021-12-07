@@ -1,0 +1,47 @@
+﻿@<link href="~/css/project.css" rel="stylesheet" />
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h3>@Html.DisplayFor(model => model.InventoryName)</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InventoryID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InventoryName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InventoryDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InventoryPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryStock)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InventoryStock)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="InventoryID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Store">Back to List</a>
+    </form>
+</div>
