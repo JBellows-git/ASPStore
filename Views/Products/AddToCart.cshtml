@@ -27,7 +27,7 @@
                <td class="text-left"> @line.Inventory.InventoryDescription</td>
                 <td class="text-right">@line.Inventory.InventoryPrice.ToString("c")</td>
                 <td class="text-right">@((line.Quantity * line.Inventory.InventoryPrice).ToString("c"))</td>
-                <td><a asp-action="RemoveFromCart" asp-route-id="@line.Inventory.InventoryNumber" asp-route-returnUrl="products/index">Remove From Cart</a></td>
+                <td><a asp-action="RemoveFromCart" asp-route-id="@line.Inventory.InventoryID" asp-route-returnUrl="products/index">Remove From Cart</a></td>
             </tr> 
 
         }
