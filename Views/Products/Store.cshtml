@@ -1,20 +1,17 @@
-﻿<link href="~/css/project.css" rel="stylesheet" />
-
-@model IEnumerable<GroupProject.Models.Inventory>
+﻿@model IEnumerable<GroupProject.Models.Inventory>
 <!DOCTYPE html>
-
-<link href="~/css/project.css" rel="stylesheet" />
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>2 Guys and a Store</title>
+    <link href="~/css/project.css" rel="stylesheet" />
 </head>
 <body>
     <div>
         <h2>Our currently available Inventory</h2>
         <h4><a asp-action="NewItem">Add new item</a></h4>
-        <table style="background-color: white;">
+        <table>
             <thead >
                 <tr>
                     <th>

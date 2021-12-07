@@ -29,6 +29,7 @@ namespace GroupProject.Controllers
             return View(await _context.Inventories.ToListAsync());
         }
 
+        [Authorize]
         public IActionResult NewItem()
         {
             return View();
