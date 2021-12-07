@@ -1,0 +1,20 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div><h4>Create Role</h4></div>
+    <form asp-action="CreateRole" method="post">
+        <div class="form-group">
+            <label for="name">Name:&nbsp;</label>
+            <input name="name" class="form-control" />            
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</body>
+</html>

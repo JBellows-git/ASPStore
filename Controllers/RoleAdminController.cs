@@ -40,5 +40,7 @@ namespace GroupProject.Controllers
         }
 
         public IActionResult RoleList() => View(roleManager.Roles);
+
+
     }
 }

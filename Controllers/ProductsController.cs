@@ -96,9 +96,9 @@ namespace GroupProject.Controllers
             return View(inventory);
         }
 
-        public async Task<IActionResult> Create(InventoryViewModel model)
+        
         [HttpPost]
-        public async Task<IActionResult> NewItem(InventoryViewModel model)
+        public async Task<IActionResult> Create(InventoryViewModel model)
         {
             if (ModelState.IsValid)
             {
