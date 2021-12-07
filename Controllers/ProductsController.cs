@@ -86,7 +86,7 @@ namespace GroupProject.Controllers
             {
                 Inventory newInventory = new Inventory
                 {
-                    InventoryNumber = model.InventoryNumber,
+                    
                     InventoryName = model.InventoryName,
                     InventoryDescription = model.InventoryDescription,
                     InventoryStock = model.InventoryStock,

@@ -12,8 +12,6 @@ namespace GroupProject.Models
 	public class Inventory
 	{
 		public int InventoryID { get; set; }
-		
-		public int InventoryNumber { get; set; }
 
 		public string InventoryName { get; set; }
 
