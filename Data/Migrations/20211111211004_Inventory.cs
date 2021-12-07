@@ -17,7 +17,7 @@ namespace GroupProject.Data.Migrations
                     InventoryName = table.Column<string>(nullable: true),
                     InventoryDescription = table.Column<string>(nullable: true),
                     InventoryStock = table.Column<int>(nullable: false),
-                    IventoryPrice = table.Column<decimal>(nullable: true)
+                    InventoryPrice = table.Column<decimal>(nullable: true)
                 },
                 constraints: table =>
                 {

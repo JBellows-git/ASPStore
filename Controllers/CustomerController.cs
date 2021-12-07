@@ -35,7 +35,7 @@ namespace GroupProject.Controllers
             
             return View(cust);
         }
-
+        [HttpGet]
         public IActionResult Update()
         {
             var cust = (from c in _context.Customers
@@ -61,7 +61,8 @@ namespace GroupProject.Controllers
            
         }
 
-        public async Task<IActionResult> InformationUpdate(CustomerViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> Update(CustomerViewModel model)
         {
             var cust = (from c in _context.Customers
                         where c.Email == User.Identity.Name

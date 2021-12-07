@@ -1,4 +1,6 @@
-﻿@model IEnumerable<GroupProject.Models.Customer>
+﻿<link href="~/css/project.css" rel="stylesheet" />
+
+@model IEnumerable<GroupProject.Models.Customer>
 <!DOCTYPE html>
 
 <html>
@@ -8,7 +10,7 @@
 </head>
 <body>
     <div>
-        <table>
+        <table style="background-color: white;">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.FirstName)</th>
@@ -22,17 +24,17 @@
             </thead>
             <tbody>
                 @foreach (var cust in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelCust => cust.FirstName)</td>
-                    <td>@Html.DisplayFor(modelCust => cust.LastName)</td>
-                    <td>@Html.DisplayFor(modelCust => cust.Address)</td>
-                    <td>@Html.DisplayFor(modelCust => cust.City)</td>
-                    <td>@Html.DisplayFor(modelCust => cust.State)</td>
-                    <td>@Html.DisplayFor(modelCust => cust.Zipcode)</td>
-                    <td>@Html.DisplayFor(modelCust => cust.Email)</td>
-                </tr>
-            }
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelCust => cust.FirstName)</td>
+                        <td>@Html.DisplayFor(modelCust => cust.LastName)</td>
+                        <td>@Html.DisplayFor(modelCust => cust.Address)</td>
+                        <td>@Html.DisplayFor(modelCust => cust.City)</td>
+                        <td>@Html.DisplayFor(modelCust => cust.State)</td>
+                        <td>@Html.DisplayFor(modelCust => cust.Zipcode)</td>
+                        <td>@Html.DisplayFor(modelCust => cust.Email)</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

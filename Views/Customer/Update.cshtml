@@ -11,36 +11,46 @@
 <body>
     <div>
         <h2>Update Your Information</h2>
-        <form asp-action="InformationUpdate">
+        <form asp-action="Update">
+            
             <table>
                 <tr>
-                    <td><label>First Name: </label></td>
-                    <td><input asp-for="FirstName" id="FirstName" /></td>
+                    <td><label asp-for="FirstName">First Name: </label></td>
+                    <td><input asp-for="FirstName" id="FirstName" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span></td>
                 </tr>
                 <tr>
-                    <td><label>Last Name: </label></td>
-                    <td><input asp-for="LastName" id="LastName" /></td>
+                    <td><label asp-for="LastName">Last Name: </label></td>
+                    <td><input asp-for="LastName" id="LastName" />
+                    <span asp-validation-for="LastName" class="text-danger"></span></td> 
                 </tr>
                 <tr>
-                    <td><label>Address: </label></td>
-                    <td><input asp-for="Address" id="Address" /></td>
+                    <td><label asp-for="Address">Address: </label></td>
+                    <td><input asp-for="Address" id="Address" />
+                    <span asp-validation-for="Address" class="text-danger"></span></td>
                 </tr>
                 <tr>
-                    <td><label>City: </label></td>
-                    <td><input asp-for="City" id="City" /></td>
+                    <td><label asp-for="City">City: </label></td>
+                    <td><input asp-for="City" id="City" />
+                    <span asp-validation-for="City" class="text-danger"></span></td>
                 </tr>
                 <tr>
-                    <td><label>State: </label></td>
-                    <td><input asp-for="State" id="State" /></td>
+                    <td><label asp-for="State">State: </label></td>
+                    <td><input asp-for="State" id="State" />
+                    <span asp-validation-for="State" class="text-danger"></span></td>
                 </tr>
                 <tr>
-                    <td><label>Zip code: </label></td>
-                    <td><input asp-for="Zipcode" id="Zipcode" /></td>
+                    <td><label asp-for="Zipcode">Zip code: </label></td>
+                    <td><input asp-for="Zipcode" id="Zipcode" />
+                    <span asp-validation-for="Zipcode" class="text-danger"></span></td>
                 </tr>
             </table>
             <input type="submit" value="Update" />
 
         </form>
+        <br />
+        
+        
     </div>
 </body>
 </html>

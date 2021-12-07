@@ -12,25 +12,37 @@
     <div>
         <h2>Add a new item</h2>
 
-        <form asp-action="Create">
+        <form encrypte="multipart" asp-action="NewItem">
 
-            <label>Item Number: </label>
-            <input asp-for="InventoryNumber" id="InventoryNumber" /><br />
-
-            <label>Item Name: </label>
-            <input asp-for="InventoryName" id="InventoryName" /><br />
-
-            <label>Item Description: </label>
-            <input asp-for="InventoryDescription" id="InventoryDescription" /><br />
-
-            <label>Item Stock Amount: </label>
-            <input asp-for="InventoryStock" id="InventoryStock" /><br />
-
-            <label>Item Price: </label>
-            <input asp-for="IventoryPrice" id="InventoryPrice" /><br />
-            <input type="submit" value="submit" />
+            <div>
+                <label asp-for="InventoryNumber">Item Number: </label>
+                <input asp-for="InventoryNumber" />
+                <span asp-validation-for="InventoryNumber" class="text-danger"></span><br />
+            </div>
+            <div>
+                <label asp-for="InventoryName">Item Name: </label>
+                <input asp-for="InventoryName" />
+                <span asp-validation-for="InventoryName" class="text-danger"></span><br />
+            </div>
+            <div>
+                <label asp-for="InventoryDescription">Item Description: </label>
+                <input asp-for="InventoryDescription" />
+                <span asp-validation-for="InventoryDescription" class="text-danger"></span><br />
+            </div>
+            <div>
+                <label asp-for="InventoryStock">Item Stock Amount: </label>
+                <input asp-for="InventoryStock" />
+                <span asp-validation-for="InventoryStock" class="text-danger"></span><br />
+            </div>    
+            <div>
+                <label asp-for="InventoryPrice">Item Price: </label>
+                <input asp-for="InventoryPrice" />
+                <span asp-validation-for="InventoryPrice" class="text-danger"></span><br />
+            </div>
+            <input type="submit" value="Submit" />
         </form>
     </div>
+    <a asp-action="Store">Back To Store</a>
 </body>
 </html>
 

@@ -1,19 +1,16 @@
-﻿<link href="~/css/project.css" rel="stylesheet" />
-
-@model IEnumerable<GroupProject.Models.Inventory>
+﻿@model IEnumerable<GroupProject.Models.Inventory>
 <!DOCTYPE html>
-
-<link href="~/css/project.css" rel="stylesheet" />
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>2 Guys and a Store</title>
+    <link href="~/css/project.css" rel="stylesheet" />
 </head>
 <body>
     <div>
         <h2>Our currently available Inventory</h2>
-        <a asp-area="" asp-controller="Products" asp-action="NewItem">Add new item</a>
+        <h4><a asp-action="NewItem">Add new item</a></h4>
         <table>
             <thead >
                 <tr>
@@ -27,7 +24,7 @@
                         @Html.DisplayNameFor(model => model.InventoryStock)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.IventoryPrice)
+                        @Html.DisplayNameFor(model => model.InventoryPrice)
                     </th>
                     <th>
                         Add to Cart
@@ -48,7 +45,7 @@
                             @Html.DisplayFor(modelItem => item.InventoryStock)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IventoryPrice)
+                            @Html.DisplayFor(modelItem => item.InventoryPrice)
                         </td>
                         <td>
                             <a asp-action="AddToCart" asp-route-id="@item.InventoryID" asp-route-returnUrl="home/store">Add to Cart</a> |
@@ -58,6 +55,7 @@
                 }
             </tbody>
         </table>
+        <h4><a asp-action="AddToCart">Go to cart</a></h4>
     </div>
 </body>
 </html>

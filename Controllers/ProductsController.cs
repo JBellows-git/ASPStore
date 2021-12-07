@@ -29,6 +29,8 @@ namespace GroupProject.Controllers
             return View(await _context.Inventories.ToListAsync());
         }
 
+        [Authorize]
+        [HttpGet]
         public IActionResult NewItem()
         {
             return View();
@@ -95,6 +97,8 @@ namespace GroupProject.Controllers
         }
 
         public async Task<IActionResult> Create(InventoryViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> NewItem(InventoryViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +108,7 @@ namespace GroupProject.Controllers
                     InventoryName = model.InventoryName,
                     InventoryDescription = model.InventoryDescription,
                     InventoryStock = model.InventoryStock,
-                    IventoryPrice = model.IventoryPrice
+                    InventoryPrice = model.InventoryPrice
                 };
                 
                 _context.Add(newInventory);

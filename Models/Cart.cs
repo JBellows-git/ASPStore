@@ -29,7 +29,7 @@ namespace GroupProject.Models
         
 
         public virtual decimal ComputeTotalValue() =>
-            (decimal)lineCollection.Sum(e => e.Inventory.IventoryPrice * e.Quantity);
+            (decimal)lineCollection.Sum(e => e.Inventory.InventoryPrice * e.Quantity);
         
 
         public virtual void Clear() => lineCollection.Clear();
