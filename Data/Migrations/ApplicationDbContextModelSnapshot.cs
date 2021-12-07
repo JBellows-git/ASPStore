@@ -63,9 +63,9 @@ namespace GroupProject.Data.Migrations
 
                     b.Property<int>("InventoryNumber");
 
-                    b.Property<int>("InventoryStock");
-
                     b.Property<decimal>("InventoryPrice");
+
+                    b.Property<int>("InventoryStock");
 
                     b.HasKey("InventoryID");
 

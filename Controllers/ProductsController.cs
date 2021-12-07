@@ -30,6 +30,7 @@ namespace GroupProject.Controllers
         }
 
         [Authorize]
+        [HttpGet]
         public IActionResult NewItem()
         {
             return View();
@@ -78,7 +79,8 @@ namespace GroupProject.Controllers
 
         }
 
-        public async Task<IActionResult> Create(InventoryViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> NewItem(InventoryViewModel model)
         {
             if (ModelState.IsValid)
             {

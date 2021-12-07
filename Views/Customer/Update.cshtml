@@ -16,27 +16,33 @@
             <table>
                 <tr>
                     <td><label asp-for="FirstName">First Name: </label></td>
-                    <td><input asp-for="FirstName" id="FirstName" />&nbsp;@Html.ValidationMessageFor(model => model.FirstName)</td>
+                    <td><input asp-for="FirstName" id="FirstName" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span></td>
                 </tr>
                 <tr>
                     <td><label asp-for="LastName">Last Name: </label></td>
-                    <td><input asp-for="LastName" id="LastName" />&nbsp;@Html.ValidationMessageFor(model => model.LastName)</td> 
+                    <td><input asp-for="LastName" id="LastName" />
+                    <span asp-validation-for="LastName" class="text-danger"></span></td> 
                 </tr>
                 <tr>
                     <td><label asp-for="Address">Address: </label></td>
-                    <td><input asp-for="Address" id="Address" />&nbsp;@Html.ValidationMessageFor(model => model.Address)</td>
+                    <td><input asp-for="Address" id="Address" />
+                    <span asp-validation-for="Address" class="text-danger"></span></td>
                 </tr>
                 <tr>
                     <td><label asp-for="City">City: </label></td>
-                    <td><input asp-for="City" id="City" />&nbsp;@Html.ValidationMessageFor(model => model.City)</td>
+                    <td><input asp-for="City" id="City" />
+                    <span asp-validation-for="City" class="text-danger"></span></td>
                 </tr>
                 <tr>
                     <td><label asp-for="State">State: </label></td>
-                    <td><input asp-for="State" id="State" />&nbsp;@Html.ValidationMessageFor(model => model.State)</td>
+                    <td><input asp-for="State" id="State" />
+                    <span asp-validation-for="State" class="text-danger"></span></td>
                 </tr>
                 <tr>
                     <td><label asp-for="Zipcode">Zip code: </label></td>
-                    <td><input asp-for="Zipcode" id="Zipcode" />&nbsp; @Html.ValidationMessageFor(model => model.Zipcode)</td>
+                    <td><input asp-for="Zipcode" id="Zipcode" />
+                    <span asp-validation-for="Zipcode" class="text-danger"></span></td>
                 </tr>
             </table>
             <input type="submit" value="Update" />
