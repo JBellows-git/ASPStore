@@ -77,6 +77,23 @@ namespace GroupProject.Controllers
 
         }
 
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var inventory = await _context.Inventories
+                .SingleOrDefaultAsync(m => m.InventoryID == id);
+            if (inventory == null)
+            {
+                return NotFound();
+            }
+
+            return View(inventory);
+        }
+
         public async Task<IActionResult> Create(InventoryViewModel model)
         {
             if (ModelState.IsValid)
