@@ -1,6 +1,4 @@
-﻿<link href="~/css/project.css" rel="stylesheet" />
-
-@model GroupProject.Models.InventoryViewModel
+﻿@model GroupProject.Models.InventoryViewModel
 <!DOCTYPE html>
 
 <html>
@@ -20,9 +18,9 @@
                 <input asp-for="InventoryName" />
                 <span asp-validation-for="InventoryName" class="text-danger"></span><br />
             </div>
-            <div>
+            <div class="description">
                 <label asp-for="InventoryDescription">Item Description: </label>
-                <input asp-for="InventoryDescription" />
+                <textarea asp-for="InventoryDescription" rows="4" cols="50" ></textarea>
                 <span asp-validation-for="InventoryDescription" class="text-danger"></span><br />
             </div>
             <div>
