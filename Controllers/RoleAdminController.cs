@@ -10,6 +10,7 @@ using GroupProject.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace GroupProject.Controllers
 {
@@ -41,6 +42,32 @@ namespace GroupProject.Controllers
 
         public IActionResult RoleList() => View(roleManager.Roles);
 
+        public IActionResult CreateRole() => View();
 
+        [HttpPost]
+        public async Task<IActionResult> CreateRole([Required]string name)
+        {
+            if (ModelState.IsValid)
+            {
+                IdentityResult result = await roleManager.CreateAsync(new IdentityRole(name));
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("RoleList");
+                }
+                else
+                {
+                    AddErrorsFromResult(result);
+                }
+            }
+            return View(name);
+        }
+
+        private void AddErrorsFromResult(IdentityResult result)
+        {
+            foreach (IdentityError error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+        }
     }
 }
