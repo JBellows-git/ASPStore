@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model AdminViewModels.RoleEditModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="bg-primary m-1 p-1 text-white"><h4>Edit Role</h4> </div>
+    <form asp-action="Edit" method="post">
+        <input type="hidden" name="roleName" value="@Model.Role.Name" />
+        <input type="hidden" name="roleId" value="@Model.Role.Id" />
+        <h6 class="bg-info p-1 text-white">Add To @Model.Role.Name</h6>
+        <table class="table table-bordered table-sm">
+            @if (Model.NonMembers.Count() == 0)
+            {
+                <tr><td colspan="2">All Users Are Members</td></tr>
+            }
+            else
+            {
+                @foreach (IdentityUser user in Model.NonMembers)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>
+                            <input type="checkbox" name="IdsToAdd" value="@user.Id">
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+        <h6 class="bg-info p-1 text-white">Remove From @Model.Role.Name</h6>
+        <table class="table table-bordered table-sm">
+            @if (Model.Members.Count() == 0)
+            {
+                <tr><td colspan="2">No Users Are Members</td></tr>
+            }
+            else
+            {
+                @foreach (IdentityUser user in Model.Members)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>
+                            <input type="checkbox" name="IdsToDelete" value="@user.Id">
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="RoleList" class="btn btn-secondary">Cancel</a>
+    </form>
+
+</body>
+</html>

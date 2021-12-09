@@ -20,12 +20,14 @@ namespace GroupProject.Controllers
     {
 
         private RoleManager<IdentityRole> roleManager;
+        private UserManager<IdentityUser> userManager;
         private readonly ApplicationDbContext _context;
         private readonly IHostingEnvironment hostingEnvironment;
 
-        public RoleAdminController(RoleManager<IdentityRole> roleMgr, ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
+        public RoleAdminController(RoleManager<IdentityRole> roleMgr, UserManager<IdentityUser> userMgr, ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             roleManager = roleMgr;
+            userManager = userMgr;
             _context = context;
             this.hostingEnvironment = hostingEnvironment;
         }
@@ -59,7 +61,91 @@ namespace GroupProject.Controllers
                     AddErrorsFromResult(result);
                 }
             }
-            return View(name);
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id)
+        {
+            IdentityRole role = await roleManager.FindByIdAsync(id);
+            if (role != null)
+            {
+                IdentityResult result = await roleManager.DeleteAsync(role);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("RoleList");
+                }
+                else
+                {
+                    AddErrorsFromResult(result);
+                }
+            } 
+            else
+            {
+                ModelState.AddModelError("", "No role found");
+            }
+            return View("RoleList", roleManager.Roles);
+        }
+
+        public async Task<IActionResult> Edit (string id)
+        {
+            IdentityRole role = await roleManager.FindByIdAsync(id);
+            List<IdentityUser> members = new List<IdentityUser>();
+            List<IdentityUser> nonMembers = new List<IdentityUser>();
+            foreach (IdentityUser user in userManager.Users)
+            {
+                var list = await userManager.IsInRoleAsync(user, role.Name)
+                    ? members : nonMembers;
+                list.Add(user);
+            }
+            
+            return View(new AdminViewModels.RoleEditModel { 
+            Role = role,
+            Members = members,
+            NonMembers = nonMembers});
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(AdminViewModels.RoleModificationModel model)
+        {
+            IdentityResult result;
+            if (ModelState.IsValid)
+            {
+                foreach (string userId in model.IdsToAdd ?? new string[] { })
+                {
+                    IdentityUser user = await userManager.FindByIdAsync(userId);
+                    if (user != null)
+                    {
+                        result = await userManager.AddToRoleAsync(user,
+                            model.RoleName);
+                        if (!result.Succeeded)
+                        {
+                            AddErrorsFromResult(result);
+                        }
+                    }
+                }
+                foreach (string userId in model.IdsToDelete ?? new string[] { })
+                {
+                    IdentityUser user = await userManager.FindByIdAsync(userId);
+                    if (user != null)
+                    {
+                        result = await userManager.RemoveFromRoleAsync(user,
+                            model.RoleName);
+                        if (!result.Succeeded)
+                        {
+                            AddErrorsFromResult(result);
+                        }
+                    }
+                }
+            }
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction(nameof(RoleList));
+            }
+            else
+            {
+                return await Edit(model.RoleId);
+            }
         }
 
         private void AddErrorsFromResult(IdentityResult result)

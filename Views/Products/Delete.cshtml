@@ -1,4 +1,6 @@
-﻿@<link href="~/css/project.css" rel="stylesheet" />
+﻿@model GroupProject.Models.Inventory
+
+<link href="~/css/project.css" rel="stylesheet" />
 
 <h2>Delete</h2>
 
@@ -38,7 +40,7 @@
             @Html.DisplayFor(model => model.InventoryStock)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="InventoryID" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
